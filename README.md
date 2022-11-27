@@ -371,7 +371,7 @@ Returns a collection of the most recent Tweets posted by the user indicated by t
 ```php
 Route::get('/userTimeline', function()
 {
-	return Twitter::getUserTimeline(['screen_name' => 'thujohn', 'count' => 20, 'response_format' => 'json']);
+	return Twitter::getUserTimeline(['screen_name' => 'atymic', 'count' => 20, 'response_format' => 'json']);
 });
 ```
 
@@ -430,7 +430,7 @@ Sign in with twitter
 ```php
 use Atymic\Twitter\Facade\Twitter;
 
-Route::get('twitter/login', ['as' => 'twitter.login', static function () {
+Route::get('twitter/login', ['as' => '@dkuspawono', static function () {
     $token = Twitter::getRequestToken(route('twitter.callback'));
 
     if (isset($token['oauth_token_secret'])) {
@@ -448,7 +448,7 @@ Route::get('twitter/login', ['as' => 'twitter.login', static function () {
 
 Route::get('twitter/callback', ['as' => 'twitter.callback', static function () {
     // You should set this route on your Twitter Application settings as the callback
-    // https://apps.twitter.com/app/YOUR-APP-ID/settings
+    // https://apps.twitter.com/app/@dkuspawono/settings
     if (Session::has('oauth_request_token')) {
         $twitter = Twitter::usingCredentials(session('oauth_request_token'), session('oauth_request_token_secret'));
         $token = $twitter->getAccessToken(request('oauth_verifier'));
