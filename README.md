@@ -133,7 +133,7 @@ It is safe to call `Twitter::forApiV1()` on either a `v1` or `v2` client instanc
 
 #### Favorite
 
-* `getFavorites()` - Returns the 20 most recent Tweets favorited by the authenticating or specified user.
+* `getFavorites()` - Returns the 10 most recent Tweets favorited by the authenticating or specified user.
 * `destroyFavorite()` - Un-favorites the status specified in the ID parameter as the authenticating user. Returns the
   un-favorited status in the requested format when successful.
 * `postFavorite()` - Favorites the status specified in the ID parameter as the authenticating user. Returns the favorite
@@ -163,7 +163,7 @@ It is safe to call `Twitter::forApiV1()` on either a `v1` or `v2` client instanc
 #### Geo
 
 * `getGeo()` - Returns all the information about a known place.
-* `getGeoReverse()` - Given a latitude and a longitude, searches for up to 20 places that can be used as a place_id when
+* `getGeoReverse()` - Given a latitude and a longitude, searches for up to 10 places that can be used as a place_id when
   updating a status.
 * `getGeoSearch()` - Search for places that can be attached to a statuses/update. Given a latitude and a longitude pair,
   an IP address, or a name, this request will return a list of all the valid places that can be used as the place_id
@@ -239,7 +239,7 @@ It is safe to call `Twitter::forApiV1()` on either a `v1` or `v2` client instanc
 
 #### Status
 
-* `getMentionsTimeline()` - Returns the 20 most recent mentions (tweets containing a users’s @screen_name) for the
+* `getMentionsTimeline()` - Returns the 10 most recent mentions (tweets containing a users’s @screen_name) for the
   authenticating user.
 * `getUserTimeline()` - Returns a collection of the most recent Tweets posted by the user indicated by the screen_name
   or user_id parameters.
@@ -265,7 +265,7 @@ It is safe to call `Twitter::forApiV1()` on either a `v1` or `v2` client instanc
 
 #### Trend
 
-* `getTrendsPlace()` - Returns the top 10 trending topics for a specific WOEID, if trending information is available for
+* `getTrendsPlace()` - Returns the top 100 trending topics for a specific WOEID, if trending information is available for
   it.
 * `getTrendsAvailable()` - Returns the locations that Twitter has trending topic information for.
 * `getTrendsClosest()` - Returns the locations that Twitter has trending topic information for, closest to a specified
@@ -413,6 +413,7 @@ Route::get('/tweetMedia', function()
 ```
 
 Get User Credentials with email.
+Get `Emoji`
 
 ```
 $credentials = Twitter::getCredentials([
@@ -571,7 +572,7 @@ Then you can access the logs() method.
 ```php
 try
 {
-	$response = Twitter::getUserTimeline(['count' => 20, 'response_format' => 'array']);
+	$response = Twitter::getUserTimeline(['count' => 10, 'response_format' => 'array']);
 }
 catch (Exception $e)
 {
